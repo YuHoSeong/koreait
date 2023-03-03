@@ -11,7 +11,6 @@ public class BoardApplication {
 		System.out.println("============");
 		System.out.println("server start");
 		System.out.println("============");
-		
 	}
 
 }
