@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.koreait.board.dto.GetTestResponseDto;
 import com.koreait.board.dto.PostTestRequestDto;
-import com.koreait.board.dto.ResponseDto;
+import com.koreait.board.dto.response.ResponseDto;
 import com.koreait.board.entity.ExampleEntity;
 import com.koreait.board.repository.ExampleRepository;
 

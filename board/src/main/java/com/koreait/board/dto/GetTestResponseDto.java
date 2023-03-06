@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetTestResponseDto {
-	int number;
-	String text;
+	private int number;
+	private String text;
 }
