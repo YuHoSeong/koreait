@@ -6,7 +6,7 @@ CREATE TABLE Employee (
     name varchar(20) not null comment '이름',
     age int not null comment '나이',
     gender varchar(10) not null comment '성별',
-    academy_ability varchar(20) not null comment '학력',
+    academic_ability varchar(20) not null comment '학력',
     birth date not null comment '생년월일',
     tel_number varchar(15) not null comment '연락처',
     address text not null comment '주소',
