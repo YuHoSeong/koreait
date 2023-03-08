@@ -2,7 +2,6 @@ package com.koreait.board.dto.request.department;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -20,7 +19,7 @@ public class PostDepartmentRequestDto {
     @Length(min=0,max=50)
     private String name;
     @Min(1)
-    private int cheif;
+    private int chief;
     @NotBlank
     @Length(min=0,max=15)
     private String telNumber;

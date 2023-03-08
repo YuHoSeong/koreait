@@ -25,6 +25,7 @@ public class Sample01 {
 		id = sc.nextLine();
 		System.out.println("비밀번호를 입력하세요. :");
 		password = sc.nextLine();
+		sc.close();
 		
 		// System.out.println("id : " + id + " / pw : " + pw);
 		

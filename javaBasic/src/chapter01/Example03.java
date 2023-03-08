@@ -65,21 +65,21 @@ public class Example03 {
 		// and 연산자 (&&) -> *
 		// boolean -> 0 == false , 0 != true
 		System.out.println(0 * 1); // return 0
-		System.out.println(false && true);  // return false
+		//? System.out.println(false && true);  // return false
 		
 		// or 연산자 (||) -> +
 		// boolean -> 0 == false , 0 != true
 		System.out.println(1 + 1);  // return 2
-		System.out.println(true || true);  // return true
+		//? System.out.println(true || true);  // return true
 		
 		// and, or 연산의 규칙
 		// and : 연산 과정 중 false 가 존재하면 무조건 false
 		// or  : 연산 과정 중 true가 존재하면 무조건 true
 		// 해당 논리 뒤의 연산은 실행하지 않음
-		int a = 0;
-		int b = 0;
-		System.out.println(false && (a++ > 0));
-		System.out.println(a);
+		//? int a = 0;
+		//? int b = 0;
+		//? System.out.println(false && (a++ > 0));
+		//? System.out.println(a);
 		
 		// not 연산자 (!)
 		System.out.println(!false);

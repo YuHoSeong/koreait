@@ -12,13 +12,13 @@ import lombok.NoArgsConstructor;
 public class PostDepartmentResponseDto {
     private String departmentCode;
     private String name;
-    private int cheif;
+    private int chief;
     private String telNumber;
 
     public PostDepartmentResponseDto(DepartmentEntity departmentEntity){
         this.departmentCode = departmentEntity.getDepartmentCode();
         this.name = departmentEntity.getName();
-        this.cheif = departmentEntity.getCheif();
+        this.chief = departmentEntity.getChief();
         this.telNumber = departmentEntity.getTelNumber();
     }
     

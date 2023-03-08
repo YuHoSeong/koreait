@@ -8,6 +8,7 @@ public class Example05 {
 		// 제어문 (조건) switch
 		Scanner sc = new Scanner(System.in);
 		int number = sc.nextInt();
+		sc.close();
 		
 		switch(number) {
 		case 1: 

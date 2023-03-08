@@ -94,6 +94,7 @@ public class MainService {
         //^ findAll()
         //? 해당 테이블에 모든 레코드를 검색한 결과
         List<ExampleEntity> entityList = exampleRepository.findAll();
+        entityList.get(0);
 
         //^ save(entityInstance)
         //? 해당 테이블에 특정 레코드를 삽입 혹은 수정
@@ -105,6 +106,7 @@ public class MainService {
         //? 해당 테이블에 PK를 기준으로 레코드가 존재한다면 true를 반환,
         //? 존재하지 않는다면 false를 반환
         boolean hasEntity = exampleRepository.existsById(0);
+        if(hasEntity){}
 
         //^ deleteById(PK)
         //? 해당 테이블에 PK를 기준으로 특정 레코드를 '삭제'

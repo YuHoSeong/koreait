@@ -1,13 +1,13 @@
-package service;
+// package service;
 
-import database.DAO.UserDAO;
+// import database.DAO.UserDAO;
 
-public class UserService {
+// public class UserService {
 	
-	private UserDAO userDao;
+// 	private UserDAO userDao;
 	
-	public UserService () {
-		this.userDao = new UserDAO();
-	}
+// 	public UserService () {
+// 		this.userDao = new UserDAO();
+// 	}
 
-}
+// }

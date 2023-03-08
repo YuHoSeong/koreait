@@ -77,8 +77,14 @@ public class Main {
 
 	// 메인 메서드
 	public static void main(String[] args) {
-		
+		Main userMain = new Main();
+		UpdateUserDto updateUserDto = new UpdateUserDto(1, "222", "1111", "1111");
 		while(true) {
+			userMain.createUser(1,"111","1111","1111");
+			userMain.readUser(1);
+			userMain.updateUser(updateUserDto);
+			userMain.deleteUser(1);
+			userMain.readUserList();
 			// 1. 생성 / 2. 읽기 / 3. 수정 / 4. 삭제 / 5. 리스트 불러오기 / 6. 종료
 		}
 		

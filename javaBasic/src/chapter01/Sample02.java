@@ -34,6 +34,7 @@ public class Sample02 {
 		address = sc.nextLine();
 		System.out.println("상세주소 : ");
 		addressDetail = sc.nextLine();
+		sc.close();
 		
 		// 2. 모든값이 입력됐는지 검증
 		// 2-1. 하나라도 입력이 되지 않으면 "모두 입력하세요." 출력 후 프로그램 종료
