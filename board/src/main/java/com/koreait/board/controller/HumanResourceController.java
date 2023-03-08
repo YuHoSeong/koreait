@@ -33,6 +33,7 @@ public class HumanResourceController {
 
     //? 사원등록
     @PostMapping(POST_HUMAN_RESOURCE)
+    //? POST http://localhost:4040/apis/hr/
     public ResponseDto<PostHumanResourceResponseDto> postHumanResource(@Valid @RequestBody PostHumanResourceRequestDto requestbody){
 
         ResponseDto<PostHumanResourceResponseDto> response = humanResourceService.postHumanResource(requestbody);
@@ -42,6 +43,7 @@ public class HumanResourceController {
 
     //? 사원조회
     @GetMapping(GET_HUMAN_RESOURCE)
+    //? GET http://localhost:4040/apis/hr/{employeeNumber}
     public ResponseDto<GetHumanResourceResponseDto> GetHumanResource(@PathVariable("employeeNumber") int employeeNumber){
         
         ResponseDto<GetHumanResourceResponseDto> response = humanResourceService.getHumanResource(employeeNumber);
@@ -51,6 +53,7 @@ public class HumanResourceController {
 
     //? 사원정보수정
     @PatchMapping(PATCH_HUMAN_RESOURCE)
+    //? PATCH http://localhost:4040/apis/hr/
     public ResponseDto<PatchHumanResourceResponseDto> patchHumanResource(@Valid @RequestBody PatchHumanResourceRequestDto requestBody){
         ResponseDto<PatchHumanResourceResponseDto> response = humanResourceService.patchHumanResource(requestBody);
         return response;
