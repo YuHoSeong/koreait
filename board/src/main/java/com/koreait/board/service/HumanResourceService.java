@@ -23,7 +23,7 @@ public class HumanResourceService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
-    //? 사원등록
+    //^ 사원등록
     public ResponseDto<PostHumanResourceResponseDto> postHumanResource(PostHumanResourceRequestDto dto){
 
         PostHumanResourceResponseDto data = null;
@@ -56,7 +56,7 @@ public class HumanResourceService {
         return result;
     }
 
-    //? 사원조회
+    //^ 사원조회
     public ResponseDto<GetHumanResourceResponseDto> getHumanResource(int employeeNumber){
 
         GetHumanResourceResponseDto data = null;
@@ -78,16 +78,23 @@ public class HumanResourceService {
         return result;
     }
 
-    //? 사원정보수정
+    //^ 사원정보수정
     public ResponseDto<PatchHumanResourceResponseDto> patchHumanResource(PatchHumanResourceRequestDto dto){
         PatchHumanResourceResponseDto data = null;
 
         int employeeNumber = dto.getEmployeeNumber();
+        String departmentCode = dto.getDepartment();
 
         try {
-
+            //? 사원코드가 존재하는지 확인
             boolean hasEmployee = employeeRepository.existsById(employeeNumber);
             if(!hasEmployee) return ResponseDto.setFail(NOT_EXIST_EMPLOYEE_NUMBER);
+            //? 부서코드를 입력했을때
+            if(departmentCode != null){
+                //? 부서코드가 존재하는지 확인
+                boolean hasDepartment = departmentRepository.existsById(departmentCode);
+                if(!hasDepartment) return ResponseDto.setFail(NOT_EXIST_DEPARTMENT_CODE);
+            }
             
             EmployeeEntity updatedEmployeeEntity = new EmployeeEntity(dto);
             employeeRepository.save(updatedEmployeeEntity);
@@ -96,7 +103,7 @@ public class HumanResourceService {
 
         } catch (Exception e) {
             e.printStackTrace();
-            ResponseDto.setFail(DATABASE_ERROR);
+            return ResponseDto.setFail(DATABASE_ERROR);
         }
 
         ResponseDto<PatchHumanResourceResponseDto> result = ResponseDto.setSuccess(SUCCESS, data);
