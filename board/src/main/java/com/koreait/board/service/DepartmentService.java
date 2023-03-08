@@ -28,8 +28,13 @@ public class DepartmentService {
 
         PostDepartmentResponseDto data =null;
         int cheifEmployeeNumber = dto.getChief();
+        String departmentCode = dto.getDepartmentCode();
 
         try {
+
+            boolean hasDepartment = departmentRepository.existsById(departmentCode);
+            if(!hasDepartment) return ResponseDto.setFail(ResponseMessage.EXIST_DEPARTMENT_CODE);
+
             boolean hasEmployee = employeeRepository.existsById(cheifEmployeeNumber);
             if(!hasEmployee) return ResponseDto.setFail(ResponseMessage.NOT_EXIST_EMPLOYEE_NUMBER);
 
