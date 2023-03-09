@@ -18,10 +18,10 @@ import com.koreait.board.dto.response.humanResource.GetHumanResourceResponseDto;
 import com.koreait.board.dto.response.humanResource.PatchHumanResourceResponseDto;
 import com.koreait.board.dto.response.humanResource.PostHumanResourceResponseDto;
 import com.koreait.board.service.HumanResourceService;
-import static com.koreait.board.common.constant.ApiMappingPattern.*;
+import com.koreait.board.common.constant.ApiMappingPattern;
 
 @RestController
-@RequestMapping(HR)
+@RequestMapping(ApiMappingPattern.HR)
 public class HumanResourceController {
 
     @Autowired

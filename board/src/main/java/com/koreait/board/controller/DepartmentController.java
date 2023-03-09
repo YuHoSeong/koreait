@@ -18,14 +18,14 @@ import com.koreait.board.dto.response.department.PostDepartmentResponseDto;
 import com.koreait.board.service.DepartmentService;
 
 import org.springframework.web.bind.annotation.RequestBody;
-import static com.koreait.board.common.constant.ApiMappingPattern.*;
+import com.koreait.board.common.constant.ApiMappingPattern;
 
 import java.util.List;
 
 
 
 @RestController
-@RequestMapping(DEPARTMENT)
+@RequestMapping(ApiMappingPattern.DEPARTMENT)
 public class DepartmentController {
 
     @Autowired
