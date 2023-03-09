@@ -32,8 +32,8 @@ public class HumanResourceService {
         String departmentCode = dto.getDepartment();
 
         try {
+            //? 사원 연락처를 입력했는지 확인
             boolean hasTelNumber = employeeRepository.existsByTelNumber(telNumber);
-
             if(hasTelNumber) return ResponseDto.setFail(EXIST_PHONE_NUMBER);
 
             if(departmentCode != null) {
@@ -65,6 +65,7 @@ public class HumanResourceService {
             // boolean hasEmployee = employeeRepository.existsById(employeeNumber);
             // if(!hasEmployee) return ResponseDto.setFail(NOT_EXIST_EMPLOYEE_NUMBER);
             // EmployeeEntity employeeEntity = employeeRepository.findById(employeeNumber).get();
+            //? 사원코드가 존재하는지 확인
             EmployeeEntity employeeEntity = employeeRepository.findByEmployeeNumber(employeeNumber);
             if(employeeEntity == null) return ResponseDto.setFail(NOT_EXIST_EMPLOYEE_NUMBER);
 

@@ -1,4 +1,4 @@
-package com.koreait.board.dto.request.department;
+package com.koreait.board.dto.response.department;
 
 import java.util.ArrayList;
 import java.util.List;
