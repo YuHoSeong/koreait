@@ -97,6 +97,11 @@ public class HumanResourceService {
                 if(!hasDepartment) return ResponseDto.setFail(NOT_EXIST_DEPARTMENT_CODE);
             }
             
+            if(departmentCode != null){
+                boolean hasDepartment = departmentRepository.existsById(departmentCode);
+                if(!hasDepartment) return ResponseDto.setFail(NOT_EXIST_DEPARTMENT_CODE);
+            }
+            
             EmployeeEntity updatedEmployeeEntity = new EmployeeEntity(dto);
             employeeRepository.save(updatedEmployeeEntity);
 
