@@ -8,5 +8,10 @@
     "name": "file.url.image",
     "type": "java.lang.String",
     "description": "A description for 'file.url.image'"
+  },
+  {
+    "name": "jwt.securekey",
+    "type": "java.lang.String",
+    "description": "A description for 'jwt.securekey'"
   }
 ]}
