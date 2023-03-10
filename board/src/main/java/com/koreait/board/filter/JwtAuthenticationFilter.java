@@ -2,7 +2,6 @@ package com.koreait.board.filter;
 
 import java.io.IOException;
 
-import javax.security.auth.message.AuthException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +16,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-import org.springframework.web.client.HttpClientErrorException.Unauthorized;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.koreait.board.provider.TokenProvider;
@@ -37,27 +35,32 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
             //? Request Header에 있는 Bearer Token을 가져옴
             String token = parseBearerToken(request);
 
-            //? token이 없으면
+            System.out.println(token);
+
+            // //? token이 없으면
             if(token == null){
-                throw new AuthException();
+                throw new Exception();
             }
 
             //? token 유효성 검증
-            String sub = tokenProvider.validate(token);
-            //! 공부가 필요한 부분
-            //? request에 sub값을 포함 시켜주는 작업( Controller에 보내주기위해서는 request에 담아서 보내주는 과정)
-            AbstractAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(sub, null,AuthorityUtils.NO_AUTHORITIES);
-            authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-            //? 빈 공간을 만드는 메소드(SecurityContext 객체)
-            SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
-            //? SecurityContext 객체에 토큰을 넣는다
-            securityContext.setAuthentication(authenticationToken);
-            //? SecurityContextHolder에 SecurityContext 객체를 넣는다.
-            SecurityContextHolder.setContext(securityContext);
+            // if(token != null && SecurityContextHolder.getContext().getAuthentication() == null){
+                String sub = tokenProvider.validate(token);
+                //! 공부가 필요한 부분
+                //? request에 sub값을 포함 시켜주는 작업( Controller에 보내주기위해서는 request에 담아서 보내주는 과정)
+                AbstractAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(sub, null,AuthorityUtils.NO_AUTHORITIES);
+                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+    
+                //? 빈 공간을 만드는 메소드(SecurityContext 객체)
+                SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
+                //? SecurityContext 객체에 토큰을 넣는다
+                securityContext.setAuthentication(authenticationToken);
+                //? SecurityContextHolder에 SecurityContext 객체를 넣는다.
+                SecurityContextHolder.setContext(securityContext);
+            // }
 
         } catch (Exception e) {
             e.printStackTrace();
+            // throw new UnauthorizationException();
         }
 
         filterChain.doFilter(request, response);
@@ -74,7 +77,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 
         //? Authorization Value가 "Bearer " 로 시작되는지
         boolean isBearer = authorizationValue.startsWith("Bearer ");
-        if(isBearer) return null;
+        if(!isBearer) return null;
 
         String token = authorizationValue.substring(7);
 

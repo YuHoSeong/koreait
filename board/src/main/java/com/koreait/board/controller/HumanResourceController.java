@@ -3,6 +3,7 @@ package com.koreait.board.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,7 +45,9 @@ public class HumanResourceController {
     //? 사원조회
     @GetMapping(GET_HUMAN_RESOURCE)
     //? GET http://localhost:4040/apis/hr/{employeeNumber}
-    public ResponseDto<GetHumanResourceResponseDto> GetHumanResource(@PathVariable("employeeNumber") int employeeNumber){
+    //^ @AuthenticationPrincipal = Jwt Token에 넣었던 값(Object Principal = 현재 : sub)을 읽어 올 수 있다.
+    //^ JwtAuthenticationFilter.java > new UsernamePasswordAuthenticationToken(Object Principal , ...)
+    public ResponseDto<GetHumanResourceResponseDto> GetHumanResource(@AuthenticationPrincipal String sub, @PathVariable("employeeNumber") int employeeNumber){
         
         ResponseDto<GetHumanResourceResponseDto> response = humanResourceService.getHumanResource(employeeNumber);
         
