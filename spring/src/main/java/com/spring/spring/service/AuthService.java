@@ -20,7 +20,7 @@ public class AuthService {
 
     private PasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
 
-    public ResponseDto<SignUpResponseDto> SignUp(SignUpRequestDto dto){
+    public ResponseDto<SignUpResponseDto> signUp(SignUpRequestDto dto){
 
         SignUpResponseDto data = null;
         String email = dto.getEmail();

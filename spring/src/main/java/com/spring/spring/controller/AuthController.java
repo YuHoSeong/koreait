@@ -24,8 +24,8 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping(SIGN_UP)
-    public ResponseDto<SignUpResponseDto> SignUp(@Valid @RequestBody SignUpRequestDto requestBody){
-        ResponseDto<SignUpResponseDto> response = authService.SignUp(requestBody);
+    public ResponseDto<SignUpResponseDto> signUp(@Valid @RequestBody SignUpRequestDto requestBody){
+        ResponseDto<SignUpResponseDto> response = authService.signUp(requestBody);
         return response;
     }
 
